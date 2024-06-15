@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "pretty": true,
+    "outDir": "dist/",
+    "baseUrl": "src/",
+    "listFiles": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "__test__", "coverage"]
+}
