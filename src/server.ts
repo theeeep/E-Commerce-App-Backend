@@ -5,7 +5,7 @@ const startServer = () => {
   const PORT = config.PORT || 3000;
 
   app.listen(PORT, () => {
-    console.log(` 🌐 Server listening on PORT ${PORT} 🚀 `);
+    console.log(`🌐 Server listening on PORT ${PORT} 🚀 `);
   });
 };
 
