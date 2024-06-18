@@ -34,9 +34,7 @@ This is a fully-featured E-Commerce Application built with TypeScript, Express.j
 
 ### Database Schema
 
- ```bash
    Database Schema Files : [Database Schema](https://github.com/theeeep/practical-round-task/blob/main/prisma/schema.prisma)
-   ```
 
 ### Installation
 
