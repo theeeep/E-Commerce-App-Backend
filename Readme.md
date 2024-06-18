@@ -34,7 +34,8 @@ This is a fully-featured Role based( User, Admin ) E-Commerce Application built 
 
 ### Database Schema
 
-   Database Schema Files : [Database Schema](https://github.com/theeeep/practical-round-task/blob/main/prisma/schema.prisma)
+> [!TIP]
+> Database Schema Files : [Database Schema](https://github.com/theeeep/practical-round-task/blob/main/prisma/schema.prisma)
 
 ### Installation
 
@@ -51,7 +52,7 @@ This is a fully-featured Role based( User, Admin ) E-Commerce Application built 
    npm install
    ```
 
-3. Set up the database:
+3. Set up the Database and Environment file:
 
    - Create a PostgreSQL database
    - Update the `.env` file with your database connection details:
@@ -95,7 +96,8 @@ This is a fully-featured Role based( User, Admin ) E-Commerce Application built 
 
 ## API Documentation
 
-### Access the Swagger UI at `http://localhost:3000/api-docs`
+> [!NOTE]
+> Access the Swagger UI for API Documentation at `http://localhost:3000/api-docs`
 
 ## Project Structure
 
@@ -181,8 +183,10 @@ This is a fully-featured Role based( User, Admin ) E-Commerce Application built 
     ```
 
 - **Monthly Orders analysis for the year 2023 :**
-- To enable grouping orders by month, add a computed `month` field that extracts the month from the `createdAt` field. Prisma doesn't directly support computed fields in the schema file, but you can add the month field as an integer and ensure it gets populated by your application logic whenever an order is created.
-- Also We have to the modified schema
+
+> [!NOTE]
+> To enable grouping orders by month, add a computed `month` field that extracts the month from the `createdAt` field. Prisma doesn't directly support computed fields in the schema file, but you can add the month field as an integer and ensure it gets populated by your application logic whenever an order is created.
+> Also We have to the modified schema
 
    ```bash
     model Order {
