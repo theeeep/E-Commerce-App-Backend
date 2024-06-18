@@ -202,3 +202,18 @@ export const userOrderSummary = async (req: Request, res: Response) => {
     throw new NotFoundException('Order not found!', ErrorCodes.ORDER_NOT_FOUND);
   }
 };
+
+export const findSecondHighestOrderValue = async () => {
+  const secondHighestOrder = await prisma.order.findMany({
+    select: {
+      netAmount: true,
+    },
+    orderBy: {
+      netAmount: 'desc',
+    },
+    skip: 1,
+    take: 1,
+  });
+
+  return secondHighestOrder;
+};
