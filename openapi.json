@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Practical Round Task (E-Commerce Api)",
-    "description": "# 🚀 Get started here\n    This template guides you through CRUD operations (GET, POST, PUT, DELETE),variables, and tests.",
+    "description": "# 🚀 Get started here\n    This template guides you through CRUD operations (GET, POST, PUT, DELETE),variables, and tests.\n    \n ## ⚒︎ Features\n\n\n- User authentication and authorization\n- Product listing and management\n- Shopping cart functionality\n- Order processing and management   ",
     "version": "1.0.0"
   },
   "servers": [
