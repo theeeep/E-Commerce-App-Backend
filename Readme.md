@@ -37,8 +37,8 @@ This is a fully-featured E-Commerce Application built with TypeScript, Express.j
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/theeeep/ecommerce-app-backend.git
-   cd ecommerce-app-backend
+   git clone [https://github.com/theeeep/practical-round-task.git](https://github.com/theeeep/practical-round-task.git)
+   cd practical-round-task
    ```
 
 2. Install dependencies:
@@ -54,6 +54,18 @@ This is a fully-featured E-Commerce Application built with TypeScript, Express.j
 
      ``` bash
      DATABASE_URL=postgresql://user:password@localhost:5432/ecommerce-backend?schema=public"
+     ```
+
+      - Update the `.env` file with your PORT:
+
+     ``` bash
+     PORT=YOUR_PORT
+     ```
+
+      - Update the `.env` file with your jwt secret:
+
+     ``` bash
+     JWT_SECRET=YOUR_SECRET_KEY
      ```
 
 4. Run the Prisma migrations to set up the database schema:
@@ -99,18 +111,49 @@ This is a fully-featured E-Commerce Application built with TypeScript, Express.j
 ├── src
 │   ├── app.ts
 │   ├── config
+│   │   ├── config.ts
+│   │   └── db.config.ts
 │   ├── errorHandler.ts
 │   ├── exceptions
+│   │   ├── badRequests.ts
+│   │   ├── internalException.ts
+│   │   ├── notFound.ts
+│   │   ├── root.ts
+│   │   ├── unauthorized.ts
+│   │   └── validation.ts
 │   ├── features
+│   │   ├── auth
+│   │   │   ├── authController.ts
+│   │   │   └── authRouter.ts
+│   │   ├── cart
+│   │   │   ├── cartController.ts
+│   │   │   └── cartRouter.ts
+│   │   ├── orders
+│   │   │   ├── orderController.ts
+│   │   │   └── orderRouter.ts
+│   │   ├── products
+│   │   │   ├── productController.ts
+│   │   │   └── productRouter.ts
+│   │   ├── userAddress
+│   │   │   ├── addressController.ts
+│   │   │   └── addressRouter.ts
+│   │   └── users
+│   │       ├── userController.ts
+│   │       └── userRouter.ts
 │   ├── middlewares
+│   │   ├── admin.ts
+│   │   ├── auth.ts
+│   │   └── errors.ts
 │   ├── rootRouter.ts
 │   ├── schema
+│   │   ├── cart.schema.ts
+│   │   └── users.schema.ts
 │   ├── server.ts
 │   └── types
+│       └── express.d.ts
 ├── tsconfig.build.json
 └── tsconfig.json
 
-10 directories, 16 files
 ```
 
 ### _Task 2: Prepare queries for the below statements:_
@@ -245,14 +288,6 @@ This is a fully-featured E-Commerce Application built with TypeScript, Express.j
   };
     ```
 
-## Contributing
-
-Contributions are welcome! Please fork the repository and create a pull request with your changes. Make sure to follow the coding style and include relevant tests.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
-For any inquiries or support, feel free to contact me at [itz.deeepak@gmail.com] or open an issue on GitHub.
+For any inquiries or support, feel free to contact me at <itz.deeepak@gmail.com> or open an issue on GitHub.
