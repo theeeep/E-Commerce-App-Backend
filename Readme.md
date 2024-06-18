@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a fully-featured E-Commerce Application built with TypeScript, Express.js, PostgreSQL, and Prisma. The project aims to provide a robust and scalable solution for managing online store operations, including product listings, user management, and order processing.
+This is a fully-featured Role based( User, Admin ) E-Commerce Application built with TypeScript, Express.js, PostgreSQL, and Prisma. This project is designed for scalability and robustness, simplifying online store operations with efficient product listings, user management, and order processing.The codebase is feature-based, organized for modularity and maintainability.
 
 ## Features
 
