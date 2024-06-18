@@ -6,7 +6,7 @@ import { config } from 'config/config';
 import { BadRequestsException } from 'exceptions/badRequests';
 import { ErrorCodes } from 'exceptions/root';
 import { error } from 'console';
-import { SignUpSchema } from 'schema/users.schema';
+import { loginSchema, SignUpSchema } from 'schema/users.schema';
 import { NotFoundException } from 'exceptions/notFound';
 
 //* -----> Signup
@@ -31,10 +31,11 @@ export const signup = async (req: Request, res: Response, next: NextFunction) =>
   res.status(201).json({ message: ` User ${user.name} created`, data: user });
 };
 
-const tokenStore = new Set(); // In-memory store for tokens (for demonstration purposes)
+const tokenStore = new Set(); // In-memory store for tokens
 
 //* -----> Login
 export const login = async (req: Request, res: Response) => {
+  loginSchema.parse(req.body);
   const { email, password } = req.body;
   let user = await prisma.user.findFirst({ where: { email } });
 

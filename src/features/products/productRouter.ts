@@ -14,11 +14,11 @@ import adminMiddleware from 'middlewares/admin';
 
 const productRoutes: Router = Router();
 
-productRoutes.post('/', [authMiddleware, adminMiddleware], errorHandler(createProduct));
-productRoutes.put('/:id', [authMiddleware, adminMiddleware], errorHandler(updateProduct));
-productRoutes.delete('/:id', [authMiddleware, adminMiddleware], errorHandler(deleteProduct));
-productRoutes.get('/', [authMiddleware, adminMiddleware], errorHandler(listProducts));
-productRoutes.get('/search', [authMiddleware], errorHandler(searchProducts));
-productRoutes.get('/:id', [authMiddleware, adminMiddleware], errorHandler(getProductById));
+productRoutes.post('/addProduct', [authMiddleware, adminMiddleware], errorHandler(createProduct));
+productRoutes.put('/updateProduct/:id', [authMiddleware, adminMiddleware], errorHandler(updateProduct));
+productRoutes.delete('/delete/:id', [authMiddleware, adminMiddleware], errorHandler(deleteProduct));
+productRoutes.get('/getProductList', [authMiddleware, adminMiddleware], errorHandler(listProducts));
+productRoutes.get('/searchProduct', [authMiddleware], errorHandler(searchProducts));
+productRoutes.get('/getProductById/:id', [authMiddleware, adminMiddleware], errorHandler(getProductById));
 
 export default productRoutes;

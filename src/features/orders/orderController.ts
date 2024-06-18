@@ -9,7 +9,7 @@ export const createOrder = async (req: Request, res: Response) => {
   //? Notes: 3. calculate total amount
   //? Notes: 4. fetch address of user
   //? Notes: 5. to define computed field for formatted address on address module
-  //? Notes: 6. we will create a order and order productsOrder products
+  //? Notes: 6. create a order and order productsOrder products
   //? Notes: 7. create events
   //? Notes: 8. Empty the cart
 
@@ -116,6 +116,9 @@ export const getOrderById = async (req: Request, res: Response) => {
         events: true,
       },
     });
+    if (!orderItem) {
+      return res.json({ message: 'There is no Order with this Id' });
+    }
     res.json(orderItem);
   } catch (err) {
     throw new NotFoundException('Order not found!', ErrorCodes.ORDER_NOT_FOUND);
@@ -123,24 +126,31 @@ export const getOrderById = async (req: Request, res: Response) => {
 };
 
 export const listAllOrders = async (req: Request, res: Response) => {
-  let whereClause = {};
+  try {
+    let whereClause = {};
+    const status = req.query.status;
+    if (status) {
+      whereClause = {
+        status,
+      };
+    }
 
-  const status = req.query.status;
-  if (status) {
-    whereClause = {
-      status,
-    };
+    const orders = await prisma.order.findMany({
+      where: whereClause,
+      skip: +req.query.skip || 0,
+      take: 5,
+    });
+    if (orders.length == 0) {
+      return res.json({ message: ' Empty Order List' });
+    }
+
+    res.json(orders);
+  } catch (error) {
+    console.error('Error fetching orders:', error);
+    throw new NotFoundException('Orders not found!', ErrorCodes.ORDER_NOT_FOUND);
   }
-
-  const orders = await prisma.order.findMany({
-    where: whereClause,
-    skip: +req.query.skip || 0,
-    take: 5,
-  });
-  res.json(orders);
 };
 export const changeStatus = async (req: Request, res: Response) => {
-  // wrap it inside transaction
   try {
     const orderStatus = await prisma.order.update({
       where: {
@@ -162,23 +172,33 @@ export const changeStatus = async (req: Request, res: Response) => {
     throw new NotFoundException('Order not found!', ErrorCodes.ORDER_NOT_FOUND);
   }
 };
-export const listUserOrders = async (req: Request, res: Response) => {
-  let whereClause: any = {
-    userId: +req.params.id,
-  };
 
-  const status = req.params.status;
-  if (status) {
-    whereClause = {
-      ...whereClause,
-      status,
+export const userOrderSummary = async (req: Request, res: Response) => {
+  try {
+    let whereClause: any = {
+      userId: +req.params.id,
     };
-  }
 
-  const userOrders = await prisma.order.findMany({
-    where: whereClause,
-    skip: +req.query.skip || 0,
-    take: 5,
-  });
-  res.json(userOrders);
+    const status = req.params.status;
+    if (status) {
+      whereClause = {
+        ...whereClause,
+        status,
+      };
+    }
+
+    const userOrders = await prisma.order.findMany({
+      where: whereClause,
+      skip: +req.query.skip || 0,
+      take: 5,
+    });
+
+    if (userOrders.length == 0) {
+      return res.json({ message: 'Empty Order List' });
+    }
+
+    res.json(userOrders);
+  } catch (error) {
+    throw new NotFoundException('Order not found!', ErrorCodes.ORDER_NOT_FOUND);
+  }
 };

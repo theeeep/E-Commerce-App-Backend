@@ -18,6 +18,7 @@ const authMiddleware = async (req: Request, res: Response, next: NextFunction) =
   try {
     //* 3. if token is present, verify that token and extract the payload
     const payload = jwt.verify(token as string, config.jwt_secret) as any;
+
     //* 4. get the user details from the payload
     const user = await prisma.user.findFirst({
       where: {
@@ -28,6 +29,7 @@ const authMiddleware = async (req: Request, res: Response, next: NextFunction) =
     if (!user) {
       next(new UnauthorizedException('Unauthorized', ErrorCodes.UNAUTHORIZED));
     }
+
     //* 5. attach the user to the current request objects
     req.user = user;
     next();

@@ -5,6 +5,10 @@ export const SignUpSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6),
 });
+export const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(6),
+});
 
 export const AddressSchema = z.object({
   lineOne: z.string(),

@@ -26,7 +26,7 @@ export const getUserById = async (req: Request, res: Response) => {
     throw new NotFoundException('User not found!', ErrorCodes.USER_NOT_FOUND);
   }
 };
-export const changeUserRole = async (req: Request, res: Response) => {
+export const updateUserRole = async (req: Request, res: Response) => {
   try {
     const user = await prisma.user.update({
       where: {

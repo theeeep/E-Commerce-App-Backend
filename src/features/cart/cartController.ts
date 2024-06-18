@@ -5,7 +5,6 @@ import { ErrorCodes } from 'exceptions/root';
 import { Request, Response } from 'express';
 import { ChangeQuantitySchema, CreateCartSchema } from 'schema/cart.schema';
 export const addItemToCart = async (req: Request, res: Response) => {
-  // TODO : Check for the existence of the same product in user's cart and alter the quantity as required
   const validatedData = CreateCartSchema.parse(req.body);
   let product: Product;
   try {
@@ -29,7 +28,6 @@ export const addItemToCart = async (req: Request, res: Response) => {
 
 export const deleteItemFromCart = async (req: Request, res: Response) => {
   try {
-    // TODO: Check if user is deleting its own cart item only
     const cartItem = await prisma.cartItem.findUnique({
       where: { id: +req.params.id },
     });
@@ -41,11 +39,6 @@ export const deleteItemFromCart = async (req: Request, res: Response) => {
     if (!cartItem) {
       return res.status(404).json({ success: false, message: 'Cart item not found' });
     }
-
-    // Assuming req.user.id contains the ID of the logged-in user
-    // if (cartItem.userId !== req.user.id) {
-    //   return res.status(403).json({ success: false, message: 'Unauthorized action' });
-    // }
 
     await prisma.cartItem.delete({
       where: { id: +req.params.id },

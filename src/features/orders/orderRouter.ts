@@ -8,18 +8,18 @@ import {
   getOrderById,
   listAllOrders,
   listOrders,
-  listUserOrders,
+  userOrderSummary,
 } from './orderController';
 import { errorHandler } from 'errorHandler';
 
 const orderRoutes: Router = Router();
 
-orderRoutes.post('/', [authMiddleware], errorHandler(createOrder));
-orderRoutes.get('/', [authMiddleware], errorHandler(listOrders));
-orderRoutes.put('/:id/cancel', [authMiddleware], errorHandler(cancelOrder));
-orderRoutes.get('/index', [authMiddleware, adminMiddleware], errorHandler(listAllOrders));
-orderRoutes.get('/users/:id', [authMiddleware, adminMiddleware], errorHandler(listUserOrders));
-orderRoutes.put('/:id/status', [authMiddleware, adminMiddleware], errorHandler(changeStatus));
-orderRoutes.get('/:id', [authMiddleware], errorHandler(getOrderById));
+orderRoutes.post('/checkOut', [authMiddleware], errorHandler(createOrder));
+orderRoutes.get('/orderList', [authMiddleware], errorHandler(listOrders));
+orderRoutes.put('/cancel/:id', [authMiddleware], errorHandler(cancelOrder));
+orderRoutes.get('/index', [authMiddleware, adminMiddleware], errorHandler(listAllOrders)); // Admin Access Only
+orderRoutes.put('/status/:id', [authMiddleware, adminMiddleware], errorHandler(changeStatus)); // Admin Access Only
+orderRoutes.get('/getOrderById/:id', [authMiddleware], errorHandler(getOrderById));
+orderRoutes.get('/user-order-summary/:id', [authMiddleware], errorHandler(userOrderSummary));
 
 export default orderRoutes;
