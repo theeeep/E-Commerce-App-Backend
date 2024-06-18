@@ -32,6 +32,12 @@ This is a fully-featured E-Commerce Application built with TypeScript, Express.j
 - Node.js (version v20.14.0)
 - PostgreSQL (version 16)
 
+### Database Schema
+
+ ```bash
+   Database Schema Files : [Database Schema](https://github.com/theeeep/practical-round-task/blob/main/prisma/schema.prisma)
+   ```
+
 ### Installation
 
 1. Clone the repository:
