@@ -188,7 +188,7 @@ This is a fully-featured Role based( User, Admin ) E-Commerce Application built 
 > To enable grouping orders by month, add a computed `month` field that extracts the month from the `createdAt` field. Prisma doesn't directly support computed fields in the schema file, but you can add the month field as an integer and ensure it gets populated by your application logic whenever an order is created.
 > Also We have to the modified schema
 
-   ```bash
+```bash
     model Order {
     id        Int              @id @default(autoincrement())
     userId    Int
@@ -205,12 +205,12 @@ This is a fully-featured Role based( User, Admin ) E-Commerce Application built 
 
     @@map("orders")
     }
-    ```
+```
 
 - Also we have to update createOrder controller  application logic sets the `month` field when creating or updating an `Order
 
-    ```bash
-   const createOrder = async (orderData) => {
+```bash
+    const createOrder = async (orderData) => {
     const month = new Date(orderData.createdAt).getMonth() + 1; // getMonth() returns month index from 0-11, so add 1
 
     const order = await prisma.order.create({
@@ -222,11 +222,11 @@ This is a fully-featured Role based( User, Admin ) E-Commerce Application built 
 
     return order;
     };
-    ```
+```
 
 - **Find User wise ordering summary - No. of products, total orders with total value :**
 
-    ```bash
+```bash
     export const userOrderSummary = async (req: Request, res: Response) => {
     try {
     let whereClause: any = {
@@ -256,8 +256,8 @@ This is a fully-featured Role based( User, Admin ) E-Commerce Application built 
     throw new NotFoundException('Order not found!', ErrorCodes.ORDER_NOT_FOUND);
      }
     };
-  
-     ```
+    
+```
 
 - **Find the products which are sold less than 3 times or not sold yet in the last quarter of 2023:**
 
@@ -294,7 +294,11 @@ This is a fully-featured Role based( User, Admin ) E-Commerce Application built 
     throw new NotFoundException('Order not found!', ErrorCodes.ORDER_NOT_FOUND);
         }
   };
-    ```
+    
+   
+   
+   
+  ```
 
 ## Contact
 
