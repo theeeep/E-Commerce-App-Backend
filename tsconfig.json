@@ -8,14 +8,14 @@
     "baseUrl": "src/",
     "listFiles": false,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
-
     "strict": false,
     "skipLibCheck": true,
     // "typeRoots": ["./node_module/@types", "./src/types"],
     "typeRoots": ["./src/types", "./node_modules/@types"]
   },
 
-  "include": ["src/**/*"],
+  "include": ["src/**/*", ".json"],
   "exclude": ["node_modules", "dist", "__test__", "coverage"]
 }
