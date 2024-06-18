@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Ecommerce Ts",
-    "description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Tests\" tab**\n\nTests help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/b5f280a7-4b09-48ec-857f-0a7ed99d7ef8/U2NyZWVuc2hvdCAyMDIzLTAzLTI3IGF0IDkuNDcuMjggUE0ucG5n\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) in \"Tests\" to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+    "title": "Practical Round Task (E-Commerce Api)",
+    "description": "# 🚀 Get started here\n    This template guides you through CRUD operations (GET, POST, PUT, DELETE),variables, and tests.",
     "version": "1.0.0"
   },
   "servers": [
@@ -33,9 +33,7 @@
   "paths": {
     "/api/auth/login": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "summary": "Login Admin",
         "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data.",
         "requestBody": {
@@ -115,9 +113,7 @@
     },
     "/api/auth/logout": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "summary": "Log out",
         "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data.",
         "requestBody": {
@@ -207,9 +203,7 @@
     },
     "/api/auth/signup": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "summary": "signup Admin",
         "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code.",
         "requestBody": {
@@ -300,9 +294,7 @@
     },
     "/api/auth/me": {
       "get": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "summary": "Me",
         "parameters": [
           {
@@ -326,9 +318,7 @@
     },
     "/api/products/addProduct": {
       "post": {
-        "tags": [
-          "Products"
-        ],
+        "tags": ["Products"],
         "summary": "Add Products",
         "requestBody": {
           "content": {
@@ -338,11 +328,7 @@
                 "example": {
                   "name": "Samsung S21+",
                   "description": "Powerfull  Mobile",
-                  "tags": [
-                    "512gb SSD",
-                    "16gb RAM",
-                    "5G Ready"
-                  ],
+                  "tags": ["512gb SSD", "16gb RAM", "5G Ready"],
                   "price": "90999"
                 }
               }
@@ -371,9 +357,7 @@
     },
     "/api/products/updateProduct/4": {
       "put": {
-        "tags": [
-          "Products"
-        ],
+        "tags": ["Products"],
         "summary": "update product",
         "requestBody": {
           "content": {
@@ -381,10 +365,7 @@
               "schema": {
                 "type": "object",
                 "example": {
-                  "tags": [
-                    "1TB SSD",
-                    "16gb RAM"
-                  ]
+                  "tags": ["1TB SSD", "16gb RAM"]
                 }
               }
             }
@@ -412,9 +393,7 @@
     },
     "/api/products/getProductList": {
       "get": {
-        "tags": [
-          "Products"
-        ],
+        "tags": ["Products"],
         "summary": "List Products",
         "parameters": [
           {
@@ -438,9 +417,7 @@
     },
     "/api/products/searchProduct": {
       "get": {
-        "tags": [
-          "Products"
-        ],
+        "tags": ["Products"],
         "summary": "Search Product",
         "parameters": [
           {
@@ -472,9 +449,7 @@
     },
     "/api/products/getProductById/5": {
       "get": {
-        "tags": [
-          "Products"
-        ],
+        "tags": ["Products"],
         "summary": "getProductById",
         "parameters": [
           {
@@ -498,9 +473,7 @@
     },
     "/api/products/delete/4": {
       "delete": {
-        "tags": [
-          "Products"
-        ],
+        "tags": ["Products"],
         "summary": "deleteProduct",
         "parameters": [
           {
@@ -524,9 +497,7 @@
     },
     "/api/userAddress/addAddress": {
       "post": {
-        "tags": [
-          "User Address"
-        ],
+        "tags": ["User Address"],
         "summary": "Add Address",
         "requestBody": {
           "content": {
@@ -566,9 +537,7 @@
     },
     "/api/userAddress/updateAddress": {
       "put": {
-        "tags": [
-          "User Address"
-        ],
+        "tags": ["User Address"],
         "summary": "update address",
         "requestBody": {
           "content": {
@@ -604,9 +573,7 @@
     },
     "/api/userAddress/listAddress": {
       "get": {
-        "tags": [
-          "User Address"
-        ],
+        "tags": ["User Address"],
         "summary": "Get Address List",
         "parameters": [
           {
@@ -630,9 +597,7 @@
     },
     "/api/userAddress/deleteAddress/2": {
       "delete": {
-        "tags": [
-          "User Address"
-        ],
+        "tags": ["User Address"],
         "summary": "Delete Address",
         "parameters": [
           {
@@ -656,9 +621,7 @@
     },
     "/api/users/listUsers": {
       "get": {
-        "tags": [
-          "Users Management"
-        ],
+        "tags": ["Users Management"],
         "summary": "Users List",
         "parameters": [
           {
@@ -682,9 +645,7 @@
     },
     "/api/users/getUserById/3": {
       "get": {
-        "tags": [
-          "Users Management"
-        ],
+        "tags": ["Users Management"],
         "summary": "Get User By Id",
         "parameters": [
           {
@@ -708,9 +669,7 @@
     },
     "/api/users/updateRole/4": {
       "put": {
-        "tags": [
-          "Users Management"
-        ],
+        "tags": ["Users Management"],
         "summary": "Update User Role",
         "requestBody": {
           "content": {
@@ -746,9 +705,7 @@
     },
     "/api/carts/addToCart": {
       "post": {
-        "tags": [
-          "Cart"
-        ],
+        "tags": ["Cart"],
         "summary": "Add item",
         "requestBody": {
           "content": {
@@ -785,9 +742,7 @@
     },
     "/api/carts/delete/4": {
       "delete": {
-        "tags": [
-          "Cart"
-        ],
+        "tags": ["Cart"],
         "summary": "Delete",
         "parameters": [
           {
@@ -811,9 +766,7 @@
     },
     "/api/carts/updateCart/5": {
       "put": {
-        "tags": [
-          "Cart"
-        ],
+        "tags": ["Cart"],
         "summary": "Change quantity",
         "requestBody": {
           "content": {
@@ -849,9 +802,7 @@
     },
     "/api/carts/getCart": {
       "get": {
-        "tags": [
-          "Cart"
-        ],
+        "tags": ["Cart"],
         "summary": "Get User Cart",
         "parameters": [
           {
@@ -875,9 +826,7 @@
     },
     "/api/orders/orderList": {
       "get": {
-        "tags": [
-          "Orders"
-        ],
+        "tags": ["Orders"],
         "summary": "Order List",
         "parameters": [
           {
@@ -901,9 +850,7 @@
     },
     "/api/orders/user-order-summary/11": {
       "get": {
-        "tags": [
-          "Orders"
-        ],
+        "tags": ["Orders"],
         "summary": "User Order Summary",
         "parameters": [
           {
@@ -927,9 +874,7 @@
     },
     "/api/orders/second-highest-order-value": {
       "get": {
-        "tags": [
-          "Orders"
-        ],
+        "tags": ["Orders"],
         "summary": "getSecondHighestOrderValue",
         "responses": {
           "200": {
@@ -943,9 +888,7 @@
     },
     "/api/orders/getOrderById/1": {
       "get": {
-        "tags": [
-          "Orders"
-        ],
+        "tags": ["Orders"],
         "summary": "Order By Id",
         "parameters": [
           {
@@ -969,9 +912,7 @@
     },
     "/api/orders/1/cancel": {
       "put": {
-        "tags": [
-          "Orders"
-        ],
+        "tags": ["Orders"],
         "summary": "Cancel Order",
         "requestBody": {
           "content": {}
@@ -998,9 +939,7 @@
     },
     "/api/orders": {
       "post": {
-        "tags": [
-          "Orders"
-        ],
+        "tags": ["Orders"],
         "summary": "Create Order",
         "requestBody": {
           "content": {}
@@ -1027,9 +966,7 @@
     },
     "/api/orders/index": {
       "get": {
-        "tags": [
-          "Orders"
-        ],
+        "tags": ["Orders"],
         "summary": "List All Orders Admin",
         "parameters": [
           {
@@ -1061,9 +998,7 @@
     },
     "/api/orders/status/1": {
       "put": {
-        "tags": [
-          "Orders"
-        ],
+        "tags": ["Orders"],
         "summary": "Update Order Status Admin",
         "requestBody": {
           "content": {
