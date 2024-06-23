@@ -42,7 +42,7 @@ This is a fully-featured Role based( User, Admin ) E-Commerce Application built 
 1. Clone the repository:
 
    ```bash
-   git clone [https://github.com/theeeep/practical-round-task.git](https://github.com/theeeep/practical-round-task.git)
+   git clone https://github.com/theeeep/practical-round-task.git
    cd practical-round-task
    ```
 
@@ -91,8 +91,6 @@ This is a fully-featured Role based( User, Admin ) E-Commerce Application built 
 - `npm run start:prod`: Builds the project for production
 - `npm run build`: Starts the built project
 - `npm test`: Runs tests using Jest
-
-### _Task 1 :  Develop an E-Commerce website such as Amazon or Flipkart with database schema_
 
 ## API Documentation
 
@@ -161,144 +159,6 @@ This is a fully-featured Role based( User, Admin ) E-Commerce Application built 
 └── tsconfig.json
 
 ```
-
-### _Task 2: Prepare queries for the below statements:_
-
-- **Find the second highest order value from an "Orders" table :**
-
-     ```bash
-    export const findSecondHighestOrderValue = async () => {
-    const secondHighestOrder = await prisma.order.findMany({
-    select: {
-      netAmount: true,
-    },
-    orderBy: {
-      netAmount: 'desc',
-    },
-    skip: 1,
-    take: 1,
-  });
-  return secondHighestOrder;
-    };
-    ```
-
-- **Monthly Orders analysis for the year 2023 :**
-
-> [!NOTE]
-> To enable grouping orders by month, add a computed `month` field that extracts the month from the `createdAt` field. Prisma doesn't directly support computed fields in the schema file, but you can add the month field as an integer and ensure it gets populated by your application logic whenever an order is created.
-> Also We have to the modified schema
-
-```bash
-    model Order {
-    id        Int              @id @default(autoincrement())
-    userId    Int
-    user      User             @relation(fields: [userId], references: [id])
-    netAmount Decimal
-    address   String
-    status    OrderEventStatus @default(PENDING)
-    createdAt DateTime         @default(now())
-    updatedAt DateTime         @updatedAt
-    month     Int              // Add this field to store the extracted month
-
-    products OrderProduct[]
-    events   OrderEvent[]
-
-    @@map("orders")
-    }
-```
-
-- Also we have to update createOrder controller  application logic sets the `month` field when creating or updating an `Order
-
-```bash
-    const createOrder = async (orderData) => {
-    const month = new Date(orderData.createdAt).getMonth() + 1; // getMonth() returns month index from 0-11, so add 1
-
-    const order = await prisma.order.create({
-        data: {
-            ...orderData,
-            month: month,
-        },
-    });
-
-    return order;
-    };
-```
-
-- **Find User wise ordering summary - No. of products, total orders with total value :**
-
-```bash
-    export const userOrderSummary = async (req: Request, res: Response) => {
-    try {
-    let whereClause: any = {
-      userId: +req.params.id,
-    };
-
-    const status = req.params.status;
-    if (status) {
-      whereClause = {
-        ...whereClause,
-        status,
-      };
-    }
-
-    const userOrders = await prisma.order.findMany({
-      where: whereClause,
-      skip: +req.query.skip || 0,
-      take: 5,
-    });
-
-    if (userOrders.length == 0) {
-      return res.json({ message: 'Empty Order List' });
-    }
-
-    res.json(userOrders);
-    } catch (error) {
-    throw new NotFoundException('Order not found!', ErrorCodes.ORDER_NOT_FOUND);
-     }
-    };
-    
-```
-
-- **Find the products which are sold less than 3 times or not sold yet in the last quarter of 2023:**
-
-     ```bash
-   const getProductsSoldLessThanThreeTimes = async () => {
-  try {
-    const products = await prisma.product.findMany({
-      where: {
-        AND: [
-          {
-            orders: {
-              every: {
-                createdAt: {
-                  gte: new Date('2023-10-01'),
-                  lt: new Date('2024-01-01'),
-                },
-              },
-            },
-          },
-          {
-            orders: {
-              _count: {
-                lt: 3,
-              },
-            },
-          },
-        ],
-      },
-    });
-
-    return products;
-  } catch (error) {
-    console.error('Error fetching products sold less than three times:', error);
-    throw new NotFoundException('Order not found!', ErrorCodes.ORDER_NOT_FOUND);
-        }
-  };
-    
-   
-   
-   
-  ```
 
 ## Contact
 
